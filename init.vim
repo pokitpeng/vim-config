@@ -41,13 +41,25 @@ set expandtab
 " vim plug 
 "==============================================================================
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/plugged')
+
+" 目录树
 Plug 'scrooloose/nerdtree'
+" 状态栏美化
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" 开屏美化
 Plug 'mhinz/vim-startify'
+" go插件
 Plug 'fatih/vim-go'
+" go补全
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"自动补全括号
+Plug 'Raimondi/delimitMate'
+"括号匹配的作用是提示，并不是少打一个括号
+Plug 'jiangmiao/auto-pairs'
+" 可以在导航目录中看到 git 版本信息
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
