@@ -6,11 +6,29 @@ VERSION="v1.0"
 GITCOMMIT=$(git rev-parse --short HEAD)
 BASE_DIR=$(cd $(dirname $0); pwd -P)
 
+
+
 function displayVersion() {
     echo "$VERSION.$GITCOMMIT"
 }
 
+function log() {
+    if [ "$1"x = "red"x ]; then
+        echo -e "\033[1;31m"$*"\033[0m"
+    elif [ "$1" = "green" ]; then
+        echo -e "\033[1;32m"$*"\033[0m"
+    elif [ "$1" = "yellow" ]; then
+        echo -e "\033[1;33m"$*"\033[0m"
+    elif [ "$1" = "blue" ]; then
+        echo -e "\033[1;34m"$*"\033[0m"
+    else
+        # -e 开启转义
+        echo -e $*
+    fi
+}
+
 function perpare(){
+    log blue "perpare base env ..."
     yum install -y wget python3-neovim
     curl -sL install-node.now.sh/lts | bash
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
@@ -26,11 +44,11 @@ function checkOS() {
         if [[ $OS == "Linux" ]] && [[ $NAME == "CentOS" ]] && [[ $VERSION =~ "7.4" ]]; then
             echo "Support OS!"
         else
-            echo "Not Centos 7 OS!"
+            log red "Not Centos 7 OS!"
             exit 1
         fi
     else
-        echo "Not Centos 7 OS!"
+        log red "Not Centos 7 OS!"
         exit 1
     fi
 }
@@ -38,13 +56,14 @@ function checkOS() {
 function CheckCommand(){
     # $1: command  , eg: git
     if ! type $1 >/dev/null 2>&1; then
-        echo "-bash: $1: command not found"
+        log red "-bash: $1: command not found"
         exit 1
     fi
 }
 
 function install(){
     # install neovim
+    log blue "start install neovim ..."
     wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/
     cd /usr/local/
     chmod +x nvim.appimage
@@ -52,14 +71,17 @@ function install(){
     ln -s /usr/local/squashfs-root/usr/bin/nvim /usr/local/bin/nvim
     ln -s /usr/local/squashfs-root/usr/bin/nvim /usr/local/bin/nv
     rm -rf nvim.appimage
+    log green "install neovim success"
 
     # install vim-plug
+    log blue "start install vim-plug ..."
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    log green "install vim-plug success"
 }
 
 function config(){
     if ! type nvim >/dev/null 2>&1; then
-        echo "nvim not install,start install ..."
+        log yellow "nvim not install, start install ..."
         install
     fi
     cd $BASE_DIR
@@ -67,19 +89,21 @@ function config(){
     cp ./init.vim ~/.config/nvim/
     cp ./coc-settings.json ~/.config/nvim/
 
-    echo "open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
+    log blue "open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
 }
 
 function remove(){
     rm -rf /usr/local/squashfs-root
     rm -rf /usr/local/bin/nvim
     rm -rf /usr/local/bin/nv
+    log green "remove neovim success"
     removec
 }
 
 function removec(){
     rm -rf ~/.config
     rm -rf ~/.local
+    log green "remove neovim config success"
 }
 
 # The command line help
