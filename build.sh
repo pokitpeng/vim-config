@@ -66,14 +66,14 @@ function config(){
     echo "open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
 }
 
-function rm(){
+function remove(){
     rm -rf /usr/local/squashfs-root
     rm -rf /usr/local/bin/nvim
     rm -rf /usr/local/bin/nv
     rm -rf ~/.config
 }
 
-function rmc(){
+function removec(){
     rm -rf ~/.config
 }
 
@@ -101,10 +101,10 @@ config)
     ;;
 rm)
     checkOS
-    rm
+    remove
     ;;
 rmc)
-    rmc
+    removec
     ;;
 -v | --version | version)
     version
