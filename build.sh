@@ -62,8 +62,27 @@ function CheckCommand(){
     fi
 }
 
+func installGolang(){
+    if ! type go >/dev/null 2>&1; then
+        log red "-bash: go: command not found"
+        read -p "install golang：y/n ?   " choose
+        if [ $choose = "y" ]
+        then
+            log blue "start install golang ..."
+            curl -sLf https://raw.githubusercontent.com/pokitpeng/shell_scripts/master/install_golang/install_golang.sh | bash
+            log green "install golang success"
+        elif [ $choose = "n" ]
+            log blue "skip install golang ..."
+        else
+            log blue "skip install golang ..."
+        fi
+    fi
+    
+}
+
 function install(){
     perpare
+    installGolang
     # install neovim
     log blue "start install neovim ..."
     wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/ >/dev/null 2>&1
@@ -91,7 +110,7 @@ function config(){
     cp ./init.vim ~/.config/nvim/
     cp ./coc-settings.json ~/.config/nvim/
 
-    log blue "open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
+    log green "exec source ~/.bashrc and open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
 }
 
 function remove(){
