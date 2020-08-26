@@ -62,6 +62,7 @@ function CheckCommand(){
 }
 
 function install(){
+    perpare
     # install neovim
     log blue "start install neovim ..."
     wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/
