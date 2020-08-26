@@ -14,13 +14,13 @@ function displayVersion() {
 
 function log() {
     if [ "$1"x = "red"x ]; then
-        echo -e "\033[1;31m"$*"\033[0m"
+        echo -e "\033[1;31m"$2"\033[0m"
     elif [ "$1" = "green" ]; then
-        echo -e "\033[1;32m"$*"\033[0m"
+        echo -e "\033[1;32m"$2"\033[0m"
     elif [ "$1" = "yellow" ]; then
-        echo -e "\033[1;33m"$*"\033[0m"
+        echo -e "\033[1;33m"$2"\033[0m"
     elif [ "$1" = "blue" ]; then
-        echo -e "\033[1;34m"$*"\033[0m"
+        echo -e "\033[1;34m"$2"\033[0m"
     else
         # -e 开启转义
         echo -e $*
