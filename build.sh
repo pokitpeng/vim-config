@@ -29,8 +29,8 @@ function log() {
 
 function perpare(){
     log blue "perpare base env ..."
-    yum install -y wget python3-neovim
-    curl -sL install-node.now.sh/lts | bash
+    yum install -y wget python3-neovim  >/dev/null 2>&1
+    curl -sL install-node.now.sh/lts | bash 
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 }
 
@@ -65,10 +65,10 @@ function install(){
     perpare
     # install neovim
     log blue "start install neovim ..."
-    wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/
+    wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/ >/dev/null 2>&1
     cd /usr/local/
     chmod +x nvim.appimage
-    ./nvim.appimage --appimage-extract
+    ./nvim.appimage --appimage-extract >/dev/null 2>&1
     ln -s /usr/local/squashfs-root/usr/bin/nvim /usr/local/bin/nvim
     ln -s /usr/local/squashfs-root/usr/bin/nvim /usr/local/bin/nv
     rm -rf nvim.appimage
