@@ -4,9 +4,10 @@ set -e
 
 VERSION="v1.0"
 GITCOMMIT=$(git rev-parse --short HEAD)
-BASE_DIR=$(cd $(dirname $0); pwd -P)
-
-
+BASE_DIR=$(
+    cd $(dirname $0)
+    pwd -P
+)
 
 function displayVersion() {
     echo "$VERSION.$GITCOMMIT"
@@ -27,10 +28,10 @@ function log() {
     fi
 }
 
-function perpare(){
+function perpare() {
     log blue "perpare base env ..."
-    yum install -y wget python3-neovim  >/dev/null 2>&1
-    curl -sL install-node.now.sh/lts | bash 
+    yum install -y wget python3-neovim >/dev/null 2>&1
+    curl -sL install-node.now.sh/lts | bash
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
     source ~/.bashrc
 }
@@ -54,7 +55,7 @@ function checkOS() {
     fi
 }
 
-function CheckCommand(){
+function CheckCommand() {
     # $1: command  , eg: git
     if ! type $1 >/dev/null 2>&1; then
         log red "-bash: $1: command not found"
@@ -62,27 +63,26 @@ function CheckCommand(){
     fi
 }
 
-func installGolang(){
-    if ! type go >/dev/null 2>&1; then
-        log red "-bash: go: command not found"
-        read -p "install golang：y/n ?   " choose
-        if [ $choose = "y" ]
-        then
-            log blue "start install golang ..."
-            curl -sLf https://raw.githubusercontent.com/pokitpeng/shell_scripts/master/install_golang/install_golang.sh | bash
-            log green "install golang success"
-        elif [ $choose = "n" ]
-            log blue "skip install golang ..."
-        else
-            log blue "skip install golang ..."
-        fi
+function installGo() {
+    read -p "install golang：y/n ?" choose
+    if [ $choose = "y" ]; then
+        log blue "start install golang ..."
+        curl -sLf https://raw.githubusercontent.com/pokitpeng/shell_scripts/master/install_golang/install_golang.sh | bash
+        log green "install golang success"
+    elif [ $choose = "n" ]; then
+        log blue "skip install golang ..."
+    else
+        log blue "skip install golang ..."
     fi
-    
 }
 
-function install(){
+function install() {
     perpare
-    installGolang
+    if ! type go >/dev/null 2>&1; then
+        log red "-bash: $go: command not found"
+        installGo
+    fi
+    
     # install neovim
     log blue "start install neovim ..."
     wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/ >/dev/null 2>&1
@@ -100,7 +100,7 @@ function install(){
     log green "install vim-plug success"
 }
 
-function config(){
+function config() {
     if ! type nvim >/dev/null 2>&1; then
         log yellow "nvim not install, start install ..."
         install
@@ -113,7 +113,7 @@ function config(){
     log green "exec source ~/.bashrc and open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
 }
 
-function remove(){
+function remove() {
     rm -rf /usr/local/squashfs-root
     rm -rf /usr/local/bin/nvim
     rm -rf /usr/local/bin/nv
@@ -121,10 +121,20 @@ function remove(){
     removec
 }
 
-function removec(){
+function removec() {
     rm -rf ~/.config
     rm -rf ~/.local
     log green "remove neovim config success"
+}
+
+function upgrade() {
+    cd $BASE_DIR
+    git reset --hard
+    git pull
+    rm -rf ~/.config/nvim/init.vim
+    rm -rf ~/.config/nvim/coc-settings.json
+    cp ./init.vim ~/.config/nvim/
+    cp ./coc-settings.json ~/.config/nvim/
 }
 
 # The command line help
@@ -135,6 +145,7 @@ function display_help() {
     echo "   config             config nvim, if not install nvim, it will be auto install"
     echo "   remove             remove nvim, it will be remove config"
     echo "   removec            remove nvim config"
+    echo "   upgrade            upgrade nvim config"
     echo "   version            display version"
     echo "   help               display help"
     echo
@@ -155,6 +166,9 @@ remove)
     ;;
 removec)
     removec
+    ;;
+upgrade)
+    upgrade
     ;;
 -v | --version | version)
     displayVersion
