@@ -11,7 +11,7 @@ function displayVersion() {
 }
 
 function perpare(){
-    yum install -y neovim python3-neovim
+    yum install -y wget python3-neovim
     curl -sL install-node.now.sh/lts | bash
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 }
@@ -44,6 +44,7 @@ function CheckCommand(){
 }
 
 function install(){
+    # install neovim
     wget https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage -P /usr/local/
     cd /usr/local/
     chmod +x nvim.appimage
@@ -51,6 +52,9 @@ function install(){
     ln -s /usr/local/squashfs-root/usr/bin/nvim /usr/local/bin/nvim
     ln -s /usr/local/squashfs-root/usr/bin/nvim /usr/local/bin/nv
     rm -rf nvim.appimage
+
+    # install vim-plug
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 function config(){
@@ -70,11 +74,12 @@ function remove(){
     rm -rf /usr/local/squashfs-root
     rm -rf /usr/local/bin/nvim
     rm -rf /usr/local/bin/nv
-    rm -rf ~/.config
+    removec
 }
 
 function removec(){
     rm -rf ~/.config
+    rm -rf ~/.local
 }
 
 # The command line help
