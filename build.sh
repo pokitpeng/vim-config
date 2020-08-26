@@ -32,6 +32,7 @@ function perpare(){
     yum install -y wget python3-neovim  >/dev/null 2>&1
     curl -sL install-node.now.sh/lts | bash 
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+    source ~/.bashrc
 }
 
 # check os
