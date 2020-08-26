@@ -99,11 +99,11 @@ install)
 config)
     config
     ;;
-rm)
+remove)
     checkOS
     remove
     ;;
-rmc)
+removec)
     removec
     ;;
 -v | --version | version)
