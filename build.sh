@@ -79,7 +79,7 @@ function installGo() {
 function install() {
     perpare
     if ! type go >/dev/null 2>&1; then
-        log red "-bash: $go: command not found"
+        log red "-bash: go: command not found"
         installGo
     fi
     
