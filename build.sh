@@ -83,8 +83,8 @@ function display_help() {
     echo
     echo "   install            install nvim"
     echo "   config             config nvim, if not install nvim, it will be auto install"
-    echo "   rm                 remove nvim, it will be remove config"
-    echo "   rmc                remove nvim config"
+    echo "   remove             remove nvim, it will be remove config"
+    echo "   removec            remove nvim config"
     echo "   version            display version"
     echo "   help               display help"
     echo
