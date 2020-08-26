@@ -136,7 +136,7 @@ removec)
     removec
     ;;
 -v | --version | version)
-    version
+    displayVersion
     ;;
 -h | --help | help)
     display_help
