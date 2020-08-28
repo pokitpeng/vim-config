@@ -77,7 +77,7 @@ call plug#end()
  " 关闭vim时，如果打开的文件除了NERDTree没有其他文件时，它自动关闭，减少多次按:q!
  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
  " 打开vim时自动打开NERDTree
- autocmd vimenter * NERDTree
+ " autocmd vimenter * NERDTree
  "设定 NERDTree 视窗大小
  let g:NERDTreeWinSize = 25
 
