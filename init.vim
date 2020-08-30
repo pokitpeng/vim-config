@@ -73,6 +73,9 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdcommenter'
 " 缩进线
 Plug 'Yggdroot/indentLine'
+" 搜索工具
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 
 call plug#end()
