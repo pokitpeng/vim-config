@@ -69,6 +69,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 " 函数大纲，需要依赖：go get -u github.com/jstemmer/gotags
 Plug 'majutsushi/tagbar'
+" 快速注释，\ci
+Plug 'scrooloose/nerdcommenter'
 
 
 call plug#end()
