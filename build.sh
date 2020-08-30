@@ -31,8 +31,15 @@ function log() {
 function perpare() {
     log blue "perpare base env ..."
     yum install -y wget python3-neovim >/dev/null 2>&1
-    curl -sL install-node.now.sh/lts | bash
-    curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+    if ! type node >/dev/null 2>&1; then
+        log red "-bash: node: command not found"
+        curl -sL install-node.now.sh/lts | bash
+    fi
+    
+    if ! type yarn >/dev/null 2>&1; then
+        log red "-bash: yarn: command not found"
+        curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+    fi
     source ~/.bashrc
 }
 
