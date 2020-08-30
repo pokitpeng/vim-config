@@ -71,6 +71,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'majutsushi/tagbar'
 " 快速注释，\ci  注释 \cc 取消注释 \cu
 Plug 'scrooloose/nerdcommenter'
+" 缩进线
+Plug 'Yggdroot/indentLine'
 
 
 call plug#end()
