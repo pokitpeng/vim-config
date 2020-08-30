@@ -69,7 +69,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 " 函数大纲，需要依赖：go get -u github.com/jstemmer/gotags
 Plug 'majutsushi/tagbar'
-" 快速注释，\ci
+" 快速注释，\ci  注释 \cc 取消注释 \cu
 Plug 'scrooloose/nerdcommenter'
 
 
@@ -279,3 +279,30 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " tagbar config
 "----------------------------------------------------------------------------
 nmap <F8> :TagbarToggle<CR>
+
+"----------------------------------------------------------------------------
+" nerdcommenter config
+"----------------------------------------------------------------------------
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
