@@ -53,7 +53,8 @@ Plug 'mhinz/vim-startify'
 " go插件
 Plug 'fatih/vim-go'
 " go补全
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 "自动补全括号
 Plug 'Raimondi/delimitMate'
 "括号匹配的作用是提示，并不是少打一个括号
