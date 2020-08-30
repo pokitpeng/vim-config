@@ -61,6 +61,10 @@ Plug 'Raimondi/delimitMate'
 Plug 'jiangmiao/auto-pairs'
 " 可以在导航目录中看到 git 版本信息
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" git比较不同，:Gvdiff
+Plug 'tpope/vim-fugitive'
+" git更改显示
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
