@@ -67,6 +67,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " 快速移动 \\w  \\f
 Plug 'easymotion/vim-easymotion'
+" 函数大纲，需要依赖：go get -u github.com/jstemmer/gotags
+Plug 'majutsushi/tagbar'
+
 
 call plug#end()
 
@@ -268,3 +271,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+"----------------------------------------------------------------------------
+" tagbar config
+"----------------------------------------------------------------------------
+nmap <F8> :TagbarToggle<CR>
