@@ -115,7 +115,6 @@ function config() {
     cd $BASE_DIR
     mkdir -p ~/.config/nvim/
     cp ./init.vim ~/.config/nvim/
-    cp ./coc-settings.json ~/.config/nvim/
 
     log green "exec source ~/.bashrc and open nvim, use :PlugInstall :GoInstallBinaries  :call coc#util#install() install and config."
 }
@@ -129,8 +128,11 @@ function remove() {
 }
 
 function removec() {
-    rm -rf ~/.config
-    rm -rf ~/.local
+    rm -rf ~/.config/nvim
+    rm -rf ~/.config/coc
+    rm -rf ~/.config/configstore
+    rm -rf ~/.config/plugged
+    rm -rf ~/.local/nvim
     log green "remove neovim config success"
 }
 
@@ -139,9 +141,7 @@ function upgrade() {
     git reset --hard
     git pull
     rm -rf ~/.config/nvim/init.vim
-    rm -rf ~/.config/nvim/coc-settings.json
     cp ./init.vim ~/.config/nvim/
-    cp ./coc-settings.json ~/.config/nvim/
 }
 
 # The command line help
