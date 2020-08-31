@@ -137,6 +137,8 @@ Plug 'Yggdroot/indentLine'
 " 搜索工具
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" 补全
+Plug 'honza/vim-snippets'
 
 
 call plug#end()
