@@ -120,11 +120,7 @@ function config() {
     log green "1. exec source ~/.bashrc"
     log green "2. use :PlugInstall install plug"
     log green "3. use :GoInstallBinaries  install go tools"
-    log green "4. use :CocInstall coc-sh config bash surport"
-    log green "5. use :CocInstall coc-json config json surport"
-    log green "6. use :CocInstall coc-go config go surport"
-    log green "6. use :CocInstall coc-yaml config yaml surport"
-    log green "6. use :CocInstall coc-python config python surport"
+    log green "4. use :CocInstall coc-sh coc-go coc-json coc-python coc-yaml config env"
 }
 
 function remove() {
