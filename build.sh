@@ -33,12 +33,12 @@ function perpare() {
     yum install -y wget python3-neovim >/dev/null 2>&1
     if ! type node >/dev/null 2>&1; then
         log red "-bash: node: command not found"
-        curl -sL install-node.now.sh/lts | bash
+        curl --retry 3 -sL install-node.now.sh/lts | bash
     fi
     
     if ! type yarn >/dev/null 2>&1; then
         log red "-bash: yarn: command not found"
-        curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+        curl --retry 3 --compressed -o- -L https://yarnpkg.com/install.sh | bash
     fi
     source ~/.bashrc
 }
@@ -74,7 +74,7 @@ function installGo() {
     read -p "install golang：y/n ?" choose
     if [ $choose = "y" ]; then
         log blue "start install golang ..."
-        curl -sLf https://raw.githubusercontent.com/pokitpeng/shell_scripts/master/install_golang/install_golang.sh | bash
+        curl --retry 3 -sLf https://raw.githubusercontent.com/pokitpeng/shell_scripts/master/install_golang/install_golang.sh | bash
         log green "install golang success"
     elif [ $choose = "n" ]; then
         log blue "skip install golang ..."
@@ -103,7 +103,7 @@ function install() {
 
     # install vim-plug
     log blue "start install vim-plug ..."
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl --retry 3 -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     log green "install vim-plug success"
 }
 
