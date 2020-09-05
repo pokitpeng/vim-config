@@ -30,7 +30,7 @@ function log() {
 
 function perpare() {
     log blue "perpare base env ..."
-    yum install -y wget python3-neovim >/dev/null 2>&1
+    yum install -y wget python python36-neovim > /dev/null 2>&1
     if ! type node >/dev/null 2>&1; then
         log red "-bash: node: command not found"
         curl --retry 3 -sL install-node.now.sh/lts | bash
