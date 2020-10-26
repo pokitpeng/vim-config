@@ -142,6 +142,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " 补全
 Plug 'honza/vim-snippets'
+# gotests 生成go单元测试
+Plug 'buoto/gotests-vim'
 
 
 call plug#end()
