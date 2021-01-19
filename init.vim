@@ -134,7 +134,7 @@ Plug 'fatih/vim-go'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 "自动补全括号
-Plug 'Raimondi/delimitMate'
+"Plug 'Raimondi/delimitMate'
 "括号匹配的作用是提示，并不是少打一个括号
 Plug 'jiangmiao/auto-pairs'
 " 可以在导航目录中看到 git 版本信息
@@ -398,3 +398,4 @@ let g:NERDToggleCheckAllLines = 1
 " fzf config
 "----------------------------------------------------------------------------
 nmap <c-p> :Files <CR>
+
