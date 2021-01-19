@@ -19,6 +19,10 @@ set scrolloff=7
 " 切换paste模式
 set pastetoggle=<F3>
 
+" 开启自动进入paste模式
+autocmd InsertEnter * set paste
+
+
 "显示行号
 set number
 
