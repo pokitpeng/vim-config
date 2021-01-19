@@ -104,7 +104,7 @@ endif
 " vim plug 
 "==============================================================================
 
-call plug#begin('~/.config/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " 目录树
 Plug 'scrooloose/nerdtree'
