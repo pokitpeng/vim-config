@@ -1,6 +1,16 @@
 "==============================================================================
 " vim 基础配置 
 "==============================================================================
+if !isdirectory(expand("$HOME/.config/nvim/plugged"))
+    autocmd VimEnter * PlugInstall
+    autocmd VimEnter * GoInstallBinaries
+endif
+
+if !isdirectory(expand("$HOME/.config/configstore"))
+    autocmd VimEnter * CocInstall coc-go coc-json coc-snippets coc-yaml coc-python coc-sh coc-git coc-fzf-preview 
+                \ coc-emoji coc-gitignore
+endif
+
 " leader按键
 let mapleader = "\<space>"
 " 检测文件类型
@@ -41,8 +51,8 @@ set shiftwidth=4
 "文件编码
 set fenc=utf-8
 
-"启用鼠标
-set mouse=a
+"启用鼠标视图模式
+set mouse=v
 
 "突出显示当前行
 "set cursorline
