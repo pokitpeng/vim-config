@@ -203,6 +203,11 @@ augroup go
   autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
+" 快速运行go代码
+autocmd FileType go nmap <leader>r :!go run %<CR>
+autocmd FileType go nmap <leader>b :!go build %<CR>
+autocmd FileType go nmap <leader>t <Plug>(go-test) %<CR>
+
 
 "----------------------------------------------------------------------------
 " coc.vim config
