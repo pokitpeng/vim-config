@@ -158,7 +158,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 " gotests 生成go单元测试
 Plug 'buoto/gotests-vim'
-
+" 一键运行插件 leader+r
+Plug '0x84/vim-coderunner'
 
 call plug#end()
 
