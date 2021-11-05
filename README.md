@@ -13,7 +13,7 @@
 
 ```bash
 # gcc
-yum install -y epel-release gcc
+yum install -y fuse-libs fuse fuse-devel
 
 # ctags
 yum install -y ctags
@@ -22,12 +22,12 @@ yum install -y ctags
 curl -sLf https://gitee.com/banbaolatiao/shell_scripts/raw/master/install_golang/install_golang.sh | bash
 
 # nodejs
-curl -sL install-node.now.sh/lts | bash
-npm config set registry https://registry.npm.taobao.org/
-npm install -g neovim
-
-# yarn
-curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+npm install n -g
+n 14.15.2
+npx nrm use taobao
+npm install -g yarn
+npm install -g yrm
+yrm use taobao
 
 # python3
 yum install -y python3
@@ -42,6 +42,5 @@ git clone --depth 1 https://gitee.com/mirrors/fzf.git ~/.fzf
 ```
 
 ## 使用
-```bash
-git clone https://github.com/pokitpeng/vim-config.git ~/.config/nvim
-```
+- vim-plug命令：https://github.com/junegunn/vim-plug#commands
+- coc.nvim插件使用：https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions#install-extensions
