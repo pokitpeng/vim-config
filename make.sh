@@ -35,22 +35,22 @@ function checkOS() {
 }
 
 function init() {
-    checkOS
+    # checkOS
     log blue "init base env ..."
-    rpm -qa | grep fuse || yum install -y fuse-libs fuse fuse-devel
-    rpm -qa | grep nodejs || yum install -y nodejs
-    rpm -qa | grep python3 || yum install -y python3
+    # rpm -qa | grep fuse || yum install -y fuse-libs fuse fuse-devel
+    # rpm -qa | grep nodejs || yum install -y nodejs
+    # rpm -qa | grep python3 || yum install -y python3
 
     wget -O /usr/bin/nvim https://ghproxy.com/https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     chmod u+x /usr/bin/nvim
 
-    pip3 install neovim --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple
-    npm install n -g
-    n 14.15.2
-    npx nrm use taobao
-    npm install -g yarn
-    npm install -g yrm
-    yrm use taobao
+    # pip3 install neovim --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple
+    # npm install n -g
+    # n 14.15.2
+    # npx nrm use taobao
+    # npm install -g yarn
+    # npm install -g yrm
+    # yrm use taobao
 }
 
 function remove() {
