@@ -41,8 +41,11 @@ function init() {
     # rpm -qa | grep nodejs || yum install -y nodejs
     # rpm -qa | grep python3 || yum install -y python3
 
-    wget -O /usr/bin/nvim https://ghproxy.com/https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    chmod u+x /usr/bin/nvim
+    wget https://ghproxy.com/https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+    chmod u+x ./nvim.appimage
+
+    ./nvim.appimage --appimage-extract
+    mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
 
     # pip3 install neovim --upgrade -i https://pypi.tuna.tsinghua.edu.cn/simple
     # npm install n -g
